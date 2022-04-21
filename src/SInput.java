@@ -52,4 +52,26 @@ public class SInput {
         return this.inputInteger("", false);
     }
 
+    public double doubleInput(String prompt, boolean displayErrors) {
+        boolean valid = false;
+        double a = 0; // This is what will be parsed the value into
+        while (!valid) {
+            try {
+                System.out.print(prompt);
+                String input = scanner.next();
+                a = Double.parseDouble(input);
+                valid = true;
+            } catch (NumberFormatException e) {
+                if (displayErrors) {
+                    System.out.println("Invalid Numeric Double! Please try again.");
+                }
+            }
+        }
+        return a;
+    }
+
+    public double doubleInput(String prompt) {return this.doubleInput(prompt, false);}
+
+    public double doubleInput() { return this.doubleInput("", false); }
+
 }
